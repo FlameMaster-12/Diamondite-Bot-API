@@ -1,10 +1,20 @@
 const Discord = require("discord.js");
+const express = require("express")
+const app = express()
 const fs = require("fs");
 const client = new Discord.Client();
 const { Prefix, Token, Color } = require("./config.js");
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.db = require("quick.db");
+
+app.get("/", (req, res) => {
+  res.send("Online!")
+})
+
+app.listen(3000, () => {
+  console.log("Console Ready")
+})
 
 client.on("ready", async () => {
   console.log(`ready!`);
